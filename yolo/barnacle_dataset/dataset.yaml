@@ -1,0 +1,6 @@
+path: /Users/prish/repos/barnacles/yolo/barnacle_dataset
+train: images/train
+val: images/val
+
+names:
+  0: barnacle
