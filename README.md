@@ -1,0 +1,6 @@
+I tried 3 different approaches. I first used a yolov8 + sahi implementation to segment the image and detect barnacles with bounding boxes. This was mainly to get an idea of what the actual data is. Then, I fine-tuned a pretrained StarDist model for barnacle segmentation. The StarDist model was pretty decent at predecting star-convex polygons from object centers, and had better shape accuracy than yolo. Lastly, I trained U-Net to predict filled barnacle regions over a sliding window, then used watershed to separate touching instances.
+Limited training data affected this model the most, but I think I could have achieved better results with more augmentation. 
+
+I originally tried to train U-Net to predict boundaries instead of filled masks, but that failed miserably. The model gave a lot of false negatives because of class imbalance. Also, because the boundaries weren't perfect, watershedding was more difficult. 
+
+At the begining, I also tried to do this using just OpenCV and that was super frustrating because variation in light and shadows made it hard to get consistent results.
